@@ -1,5 +1,7 @@
 # Find the Duplicate Number :-
 
+[Problem Link] :--- (https://leetcode.com/problems/find-the-duplicate-number/description/)
+
 <h3>
   Given an array of integers nums containing n + 1 integers where each integer is in the range [1, n] inclusive.
 There is only one repeated number in nums, return this repeated number.
@@ -20,12 +22,10 @@ Output: 3<br>
 Constraints: <br>
 1 <= n <= 105 <br>
 nums.length == n + 1 <br>
-1 <= nums[i] <= n<br>
+1 <= nums[i] <= n<br><br>
 All the integers in nums appear only once except for precisely one integer which appears two or more times.
   
 </h3>
-
-[Problem Link] :--- (https://leetcode.com/problems/find-the-duplicate-number/description/)
 
 ***Solution***
 
