@@ -7,7 +7,7 @@ You must solve the problem without modifying the array nums and uses only consta
 <br><br>
 Example 1: <br>
 Input: nums = [1,3,4,2,2] <br>
-Output: 2<br>
+Output: 2<br><br>
 
 Example 2:<br>
 Input: nums = [3,1,3,4,2]<br>
@@ -17,10 +17,10 @@ Example 3:<br>
 Input: nums = [3,3,3,3,3]<br>
 Output: 3<br>
  
-Constraints:
-1 <= n <= 105
-nums.length == n + 1
-1 <= nums[i] <= n
+Constraints: <br>
+1 <= n <= 105 <br>
+nums.length == n + 1 <br>
+1 <= nums[i] <= n<br>
 All the integers in nums appear only once except for precisely one integer which appears two or more times.
   
 </h3>
