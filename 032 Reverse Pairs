@@ -1,0 +1,87 @@
+# Reverse Pairs :-
+
+[Problem Link] :--- (https://leetcode.com/problems/reverse-pairs/description/)
+
+<h3>
+Given an integer array nums, return the number of reverse pairs in the array.<br>
+
+A reverse pair is a pair (i, j) where:<br>
+
+0 <= i < j < nums.length and<br>
+nums[i] > 2 * nums[j].
+<br><br>
+
+Example 1:<br>
+Input: nums = [1,3,2,3,1]<br>
+Output: 2<br>
+Explanation: The reverse pairs are:<br>
+(1, 4) --> nums[1] = 3, nums[4] = 1, 3 > 2 * 1<br>
+(3, 4) --> nums[3] = 3, nums[4] = 1, 3 > 2 * 1<br><br>
+
+Example 2:<br>
+Input: nums = [2,4,3,5,1]<br>
+Output: 3<br>
+Explanation: The reverse pairs are:<br>
+(1, 4) --> nums[1] = 4, nums[4] = 1, 4 > 2 * 1<br>
+(2, 4) --> nums[2] = 3, nums[4] = 1, 3 > 2 * 1<br>
+(3, 4) --> nums[3] = 5, nums[4] = 1, 5 > 2 * 1<br><br>
+ 
+Constraints:<br><br>
+1 <= nums.length <= 5 * 104<br>
+-231 <= nums[i] <= 231 - 1<br><br>
+  
+</h3>
+
+***Solution***
+
+```
+
+class Solution {
+public:
+    int reversePairs(vector<int>& nums) {
+        int ans = 0, n = nums.size();
+        sect(0,n-1,nums,ans);
+	    return ans;
+    }
+    void sect(int i,int j,vector<int>&a,int &ans){
+        if(i>=j) return;
+        int m = i+(j-i)/2;
+        sect(i,m,a,ans);
+        sect(m+1,j,a,ans);
+        countPairs(i,m,j,a,ans);
+    }
+    void countPairs(int i,int m,int j,vector<int>&a,int &ans){
+        int l = i, r = m+1;
+        while(l<=m && r<=j){
+            if(a[l]>2LL*a[r]){
+                ans += (m-l+1);
+                r++;
+            }
+            else l++;
+        }
+        merge(i,m,j,a);
+    }
+    void merge(int left, int mid, int right, vector<int>& nums){
+        vector<int> temp(right - left + 1);
+        int i = left,j=mid+1,k=0;
+        while(i<=mid && j<=right){
+            if(nums[i]<=nums[j]){
+                temp[k++] = nums[i++];
+            }
+            else{
+                temp[k++] = nums[j++];
+            }
+        }
+        while(i<=mid){
+            temp[k++] = nums[i++];
+        }
+        while(j<=right){
+            temp[k++] = nums[j++];
+        }
+        for (int l = left; l <= right; l++) {
+            nums[l] = temp[l - left];
+        }
+    }
+};
+
+```
