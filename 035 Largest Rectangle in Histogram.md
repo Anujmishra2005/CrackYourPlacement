@@ -1,0 +1,55 @@
+# Largest Rectangle in Histogram :-
+
+[Problem Link] :--- (https://leetcode.com/problems/largest-rectangle-in-histogram/description/)
+
+<h3>
+Given an array of integers heights representing the histogram's bar height where the width of each bar is 1, return the area of the largest rectangle in the histogram.<br><br>
+
+Example 1:<br>
+Input: heights = [2,1,5,6,2,3]<br>
+Output: 10<br>
+Explanation: The above is a histogram where width of each bar is 1.<br>
+The largest rectangle is shown in the red area, which has an area = 10 units.<br><br>
+Example 2:<br>
+Input: heights = [2,4]<br>
+Output: 4<br><br>
+ 
+Constraints:<br>
+1 <= heights.length <= 105<br>
+0 <= heights[i] <= 104<br>
+  
+</h3>
+
+***Solution***
+
+```
+
+class Solution {
+public:
+    int largestRectangleArea(vector<int>& heights) {
+        std::stack<int> stack;
+        stack.push(-1);
+        int max_area = 0;
+
+        for (int i = 0; i < heights.size(); i++) {
+            while (stack.top() != -1 && heights[i] <= heights[stack.top()]) {
+                int height = heights[stack.top()];
+                stack.pop();
+                int width = i - stack.top() - 1;
+                max_area = std::max(max_area, height * width);
+            }
+            stack.push(i);
+        }
+
+        while (stack.top() != -1) {
+            int height = heights[stack.top()];
+            stack.pop();
+            int width = heights.size() - stack.top() - 1;
+            max_area = std::max(max_area, height * width);
+        }
+
+        return max_area;        
+    }
+};
+
+```
