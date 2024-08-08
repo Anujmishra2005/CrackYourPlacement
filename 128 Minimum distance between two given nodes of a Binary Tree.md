@@ -1,4 +1,4 @@
-# Min distance between two given nodes of a Binary Tree :-
+# Minimum distance between two given nodes of a Binary Tree :-
 
 [Problem Link] :--- (https://www.geeksforgeeks.org/problems/min-distance-between-two-given-nodes-of-a-binary-tree/1)
 
